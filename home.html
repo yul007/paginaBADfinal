@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MISSION GET HOME - USFQ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Sigmar&family=Tiny5&display=swap" rel="stylesheet">
+    <style>
+        /* Estilo general */
+        body {
+            margin: 0;
+            font-family: "Quantico", serif;
+            background: linear-gradient(120deg, #020024, #5c2d70, #00d4ff);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Encabezado */
+        header {
+            font-family: "Sigmar", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            background: rgb(217, 3, 3);
+            color: rgb(255, 255, 0);
+            text-align: center;
+            padding: 25px;
+            text-shadow: 2px 2px 5px #000;
+            font-size: 2.5rem;
+        }
+
+        /* Imagen principal */
+        .hero {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .hero img {
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Menú lateral */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 60px;
+            background: rgba(223, 91, 64, 0.805);
+            transition: width 0.3s;
+            overflow: hidden;
+        }
+
+        .sidebar:hover {
+            width: 250px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sidebar a:hover {
+            background: rgba(176, 6, 9, 0.8);
+        }
+
+        
+        .mission {
+            padding: 50px;
+            text-align: center;
+            background-color: #222;
+        }
+
+        .missionintruso {
+            padding: 290px;
+            text-align: center;
+            background-color: #222;
+        }
+        /* Contenido */
+        .content {
+            margin-left: 60px;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h2 {
+            font-family: 'Cambria', cursive;
+            margin: 20px 0;
+        }
+
+        p {
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        button {
+        background-color: #c90808; /* Green */
+        border-radius: 8%;
+        color: white;
+        padding: 15px 29px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        }
+
+        button:hover {
+        background-color: white; /* Change background color */
+        color: #db0505; /* Change text color */
+        }
+
+        /* Servicios */
+        .services {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .services div {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 200px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+                /* Servicios */
+                .servicesintruso {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .servicesintruso div {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 700px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .services div:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Blog */
+        .blog {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .blog article {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            width: 200px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog article:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .blog img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Lluvia de papeles */
+        .confetti {
+            position: fixed;
+            top: -10%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: hsla(210, 71%, 80%, 0.267);
+            animation: fall 3s infinite ease-in-out;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10%) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        
+        }
+        #lista1 {
+                list-style-type: disc; /* Muestra viñetas tipo disco (círculos rellenos) */
+                list-style-position: inside; /* Coloca las viñetas dentro del contenedor */
+                text-align: left; /* Alinea el texto de la lista a la izquierda */
+                margin-left: 0; /* Elimina el margen izquierdo predeterminado */
+                padding-left: 20px; /* Ajusta el espacio del texto desde la viñeta */
+                }
+
+        #qhacemos {
+                
+                border-radius: 3%;
+                height: 120px;
+                width: 185px;
+                  }
+
+        #qsomos {
+        
+        border-radius: 3%;
+        height: 150px;
+        width: 150px;
+          }
+        
+        #nuestroequipo {
+               text-align: center;
+                       }
+        
+        #controljuego {
+        
+        height: 185px;
+        width: 185px;
+          }
+        
+        #robot {
+        
+        height: 185px;
+        width: 185px;
+               }
+
+    </style>
+</head>
+<body>
+
+    <!-- Menú lateral -->
+    <div class="sidebar">
+        <a href="HOME.html">HOME</a>
+        <a href="page2.html">BEHIND THE SCENES</a>
+        <a href="FLORES.html">&#11088;¡SORPRESA!</a>
+    </div>
+
+    <!-- Encabezado -->
+    <header>BE A DRAGON - USFQ</header>
+
+    <!-- Imagen principal -->
+    <div class="hero">
+        <img src="https://i.postimg.cc/Y99DcJPD/Whats-App-Image-2024-11-27-at-18-53-09-5f449ff5.jpg" alt="Imagen Principal">
+    </div>
+
+    <!-- Servicios -->
+    <section class="content">
+        <h2><b>¿Quiénes somos?</b></h2>
+        <div class="services">
+            <div>
+                <h3>Somos</h3>
+                <p>Estudiantes de la mejor carrera <b>Ingeniería en Ciencias de la Computación</b>.</p>
+                <img src="https://i.postimg.cc/wjgsqP89/gaot.jpg" alt="qsomos" id="qsomos">
+            </div>
+            <div>
+                <h3>¿Qué hacemos?</h3>
+                <p>Creamos soluciones que parecen de otro mundo.</p>
+                <p>Creamos y gestionamos sistemas informáticos.</p>
+                <img src="https://i.postimg.cc/qqtQBcjr/qhacemos.jpg" alt="qhacemos" id="qhacemos">
+            </div>
+        
+            <div>
+                <h3>Integrantes del equipo</h3>
+                <ol id="lista1">
+                  <li>Daniela Pérez </li>
+                  <li>Ariana Muñoz </li>
+                  <li>Ani</li>
+                  <li>Belén</li>
+                  <li>Jesy</li>
+                  <li>Yuliana Guerra</li>
+                  <li>Esteban Espinoza</li>
+                  <li>Elias Viera</li>
+                </ol>    
+            </div>
+        </div>
+    </section>
+
+        <section class="content">
+            <h2>Nuestro Equipo &#128521;</h2>
+            <div class="servicesintruso">
+                <div>
+                    <h3>Hola (poner aca el link)!</h3>
+                    <p></b></p>
+                    <img src="" alt="" id="">
+                </div>
+            </div>
+        </section>
+
+    <!-- Blog -->
+    <section class="content">
+        <h2><i><b>Nuestros Proyectos</b></i></h2>
+        <div class="blog">
+            <article>
+                <h3>Aventura Galáctica</h3>
+                <img src="https://i.postimg.cc/59FDSKH5/DALL-E-2024-11-27-20-31-51-A-young-playful-red-dragon-sitting-in-a-futuristic-spaceship-playing.webp" alt="control" id="controljuego">
+                <p>Cúbrete de las naves espaciales.</p>
+                <a href="https://gleaming-creponne-8c4c49.netlify.app/" target="_blank">
+                    <button><b>PLAY!</b></button>
+              </a>
+            </article>
+            <article>
+                <h3>Detección de Contaminantes</h3>
+                <img src="https://i.postimg.cc/zDR05r4F/pencil.jpg" alt="robot" id="robot">
+                <p>Circuitos en arduino que nos ayuda a identificar agua contaminada.</p>
+            </article>
+            <article>
+                <h3>¡Detecta al intruso!</h3>
+                <img src="https://i.postimg.cc/gjVhRG4j/Whats-App-Image-2024-11-27-at-21-06-52-362524b1.jpg" alt="LA CASA DE LAS TORTUGAS!!! :OOOO">
+                <p>Usa un sistema IoT para cuidar la casa de las tortugas ninjas.</p>
+                <a href="#intruso">
+                    <button><b>PLAY!</b></button>
+              </a>
+            </article>
+        </div>
+    </section>
+
+    <section class="missionintruso">
+        <section id="intruso">
+        <h2>Cuida a las tortugas &#128034;</h2>
+        <div class="servicesintruso">
+            <div>
+                <h3><u>Sigue los pasos</u></h3>
+                <p><b>1.- Detecta si alguien llegó a la casa</b></p>
+                <p>Usa el sistema IoT para calcular la proximidad del sujeto.</p>
+                <p><b>2.- ¿Quién anda ahí?</b></p>
+                <p>Usa la cámara para escanear al sujeto e identificarlo. </p>
+<button type="button" onclick="init()">PLAY!</button><br><br>
+<div id="webcam-container"></div>
+<div id="label-container"></div> 
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+<script type="text/javascript">
+    // More API functions here:
+    // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+    // the link to your model provided by Teachable Machine export panel
+    const URL = "https://teachablemachine.withgoogle.com/models/WOjBhAFTQ/";
+
+    let model, webcam, labelContainer, maxPredictions;
+
+    // Load the image model and setup the webcam
+    async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        // load the model and metadata
+        // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+        // or files from your local hard drive
+        // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        // Convenience function to setup a webcam
+        const flip = true; // whether to flip the webcam
+        webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+        await webcam.setup(); // request access to the webcam
+        await webcam.play();
+        window.requestAnimationFrame(loop);
+
+        // append elements to the DOM
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
+        labelContainer = document.getElementById("label-container");
+        for (let i = 0; i < maxPredictions; i++) { // and class labels
+            labelContainer.appendChild(document.createElement("div"));
+        }
+    }
+
+    async function loop() {
+        webcam.update(); // update the webcam frame
+        await predict();
+        window.requestAnimationFrame(loop);
+    }
+
+    // run the webcam image through the image model
+    async function predict() {
+        // predict can take in an image, video or canvas html element
+        const prediction = await model.predict(webcam.canvas);
+        for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
+        }
+    }
+</script>
+<p><b>3.- Desaste del intruso!</b></p>
+                
+                  </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lluvia de papeles -->
+    <div class="confetti" id="confetti-container"></div>
+
+    <script>
+        // Lluvia de confeti
+        const confettiContainer = document.getElementById('confetti-container');
+        for (let i = 0; i < 100; i++) {
+            const confetti = document.createElement('div');
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 80%, 90%)`;
+            confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+            confettiContainer.appendChild(confetti);
+        }
+    </script>
+    
+</body>
+</html>
